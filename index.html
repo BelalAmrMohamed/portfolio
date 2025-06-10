@@ -5,9 +5,9 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Belal</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Belal's portfolio</title>
+    <meta name="description" content="A portfolio website showcasing Belal Amr's projects in programming, web development, and artificial intelligence.">
+    <meta name="author" content="Belal Amr Mohamed">
 
     <!-- mobile specific metas
     ================================================== -->
@@ -144,7 +144,7 @@
                                 while maintaining a strong focus on continuous learning and personal development. 
                                 I'm currently open to internships, freelance projects, and collaboration opportunities.
                             </p>
-                            <a href="Belal Amr's CV.pdf" class="btn btn--medium u-fullwidth" data-animate-el target="_blank" rel="noopener noreferrer">Download CV</a>
+                            <a href="Belal CV.pdf" class="btn btn--medium u-fullwidth" data-animate-el target="_blank" rel="noopener noreferrer">Download CV</a>
 
                         </div>
                     </div>
@@ -441,7 +441,7 @@
                                 </ul>
                             </div>
                 
-                            <a href="https://belalamrmohamed.github.io/portfolio/" class="modal-popup__details" target="_blank" rel="noopener noreferrer">Project link</a>
+                            <a href="https://github.com/BelalAmrMohamed/NumberSystemsApp" class="modal-popup__details" target="_blank" rel="noopener noreferrer">App link</a>
                         </div>
                     </div> <!-- end modal -->
 
@@ -457,7 +457,7 @@
                                 </ul>
                             </div>
                 
-                            <a href="https://belalamrmohamed.github.io/portfolio/" class="modal-popup__details" target="_blank" rel="noopener noreferrer">Project link</a>
+                            <a href="https://github.com/BelalAmrMohamed/Calculator-app" class="modal-popup__details" target="_blank" rel="noopener noreferrer">App link</a>
                         </div>
                     </div> <!-- end modal -->
 
@@ -473,7 +473,7 @@
                                 </ul>
                             </div>
                 
-                            <a href="https://belalamrmohamed.github.io/BelalAmr/" class="modal-popup__details" target="_blank" rel="noopener noreferrer">Project link</a>
+                            <a href="https://belalamrmohamed.github.io/NumberSystems/" class="modal-popup__details" target="_blank" rel="noopener noreferrer">Project link</a>
                         </div>
                     </div> <!-- end modal -->
 
@@ -593,7 +593,7 @@
         
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <div class="testimonial-slider__author">
-                                        <img src="images/avatars/user-06.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="images/avatars/user-04.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Belal Amr</strong>
                                             <span>Full Stack Developer</span>
@@ -687,6 +687,24 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
+  }
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mailLinks = document.querySelectorAll('.mailtoui');
+            mailLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const email = this.getAttribute('href').replace('mailto:', '');
+                    window.location.href = `mailto:${email}`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>

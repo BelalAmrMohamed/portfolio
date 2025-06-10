@@ -24,7 +24,7 @@ I am actively seeking opportunities to collaborate on development projects. Whet
 How to Reach Me
 Feel free to contact me for collaboration opportunities, project inquiries, or just to connect!
 
-Email: ma5432333444@gmail.com
+Email: belalamrofficial@gmail.com
 
 GitHub: @BelalAmrMohamed
 
