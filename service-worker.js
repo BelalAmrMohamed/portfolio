@@ -1,83 +1,120 @@
-const cacheName = "belal-portfolio-cache-v1";
+const CACHE_VERSION = "v2";
+const CACHE_NAME = `belal-portfolio-cache-${CACHE_VERSION}`;
+const OFFLINE_URL = "/portfolio/offline.html"; // Optional: create this file
 const filesToCache = [
-  "/portfolio/",
-  "/portfolio/index.html",
-  "/portfolio/site.webmanifest",
-  "/portfolio/android-chrome-192x192.png",
-  "/portfolio/android-chrome-512x512.png",
-  "/portfolio/apple-touch-icon.png",
-  "/portfolio/favicon.png",
-  "/portfolio/favicon-16x16.png",
-  "/portfolio/favicon-32x32.png",
-  "/portfolio/Belal CV.pdf",
+  "./",
+  "index.html",
+  "site.webmanifest",
+  "android-chrome-192x192.png",
+  "android-chrome-512x512.png",
+  "apple-touch-icon.png",
+  "favicon.png",
+  "favicon-16x16.png",
+  "favicon-32x32.png",
+  "Belal CV.pdf",
 
   // css
-  "/portfolio/css/main.css",
-  "/css/vendor.css",
+  "css/main.css",
+  "css/vendor.css",
 
   // js
-  "/portfolio/js/main.js",
-  "/portfolio/js/plugins.js",
+  "js/main.js",
+  "js/plugins.js",
 
   //images
-  "/portfolio/images/about-photo.jpg",
-  "/portfolio/images/about-photo@2x.jpg",
+  "images/about-photo.jpg",
+  "images/about-photo@2x.jpg",
 
   // Icons
-  "/portfolio/images/icons/icon-72x72.png",
-  "/portfolio/images/icons/icon-96x96.png",
-  "/portfolio/images/icons/icon-128x128.png",
-  "/portfolio/images/icons/icon-192x192.png",
-  "/portfolio/images/icons/icon-384x384.png",
-  "/portfolio/images/icons/icon-512x512.png",
+  "images/icons/icon-72x72.png",
+  "images/icons/icon-96x96.png",
+  "images/icons/icon-128x128.png",
+  "images/icons/icon-192x192.png",
+  "images/icons/icon-384x384.png",
+  "images/icons/icon-512x512.png",
 
   // Screenshots
-  "/portfolio/screenshots/screenshot-mobile.png",
-  "/portfolio/screenshots/screenshot-desktop.png",
+  "screenshots/screenshot-mobile.png",
+  "screenshots/screenshot-desktop.png",
 
   // Portfolio images
-  "/portfolio/images/portfolio/numbersystems.jpg",
-  "/portfolio/images/portfolio/numbersystems@2x.jpg",
-  "/portfolio/images/portfolio/ceaser.jpg",
-  "/portfolio/images/portfolio/ceaser@2x.jpg",
-  "/portfolio/images/portfolio/calculator.jpg",
-  "/portfolio/images/portfolio/calculator@2x.jpg",
-  "/portfolio/images/portfolio/numbersystems - web.jpg",
-  "/portfolio/images/portfolio/numbersystems - web@2x.jpg",
-  "/portfolio/images/portfolio/playfair.jpg",
-  "/portfolio/images/portfolio/playfair@2x.jpg",
-  "/portfolio/images/portfolio/row.jpg",
-  "/portfolio/images/portfolio/row@2x.jpg",
-  "/portfolio/images/portfolio/RailFence.jpg",
-  "/portfolio/images/portfolio/RailFence@2x.jpg",
+  "images/portfolio/numbersystems.jpg",
+  "images/portfolio/numbersystems@2x.jpg",
+  "images/portfolio/ceaser.jpg",
+  "images/portfolio/ceaser@2x.jpg",
+  "images/portfolio/calculator.jpg",
+  "images/portfolio/calculator@2x.jpg",
+  "images/portfolio/numbersystems - web.jpg",
+  "images/portfolio/numbersystems - web@2x.jpg",
+  "images/portfolio/playfair.jpg",
+  "images/portfolio/playfair@2x.jpg",
+  "images/portfolio/row.jpg",
+  "images/portfolio/row@2x.jpg",
+  "images/portfolio/RailFence.jpg",
+  "images/portfolio/RailFence@2x.jpg",
 
   //gellary images
-  "/portfolio/images/portfolio/gellary/g-RailFence.jpg",
-  "/portfolio/images/portfolio/gellary/about-photo.jpg",
-  "/portfolio/images/portfolio/gellary/g-calculator.jpg",
-  "/portfolio/images/portfolio/gellary/g-ceaser.jpg",
-  "/portfolio/images/portfolio/gellary/g-numbersystems - web.jpg",
-  "/portfolio/images/portfolio/gellary/g-numbersystems.jpg",
-  "/portfolio/images/portfolio/gellary/g-playfair.jpg",
-  "/portfolio/images/portfolio/gellary/g-row.jpg",
+  "images/portfolio/gellary/g-RailFence.jpg",
+  "images/portfolio/gellary/about-photo.jpg",
+  "images/portfolio/gellary/g-calculator.jpg",
+  "images/portfolio/gellary/g-ceaser.jpg",
+  "images/portfolio/gellary/g-numbersystems - web.jpg",
+  "images/portfolio/gellary/g-numbersystems.jpg",
+  "images/portfolio/gellary/g-playfair.jpg",
+  "images/portfolio/gellary/g-row.jpg",
 
   // Avatar
-  "/portfolio/images/avatars/user-01.jpg",
-  "/portfolio/images/avatars/user-02.jpg",
-  "/portfolio/images/avatars/user-03.jpg",
-  "/portfolio/images/avatars/user-04.jpg",
+  "images/avatars/user-01.jpg",
+  "images/avatars/user-02.jpg",
+  "images/avatars/user-03.jpg",
+  "images/avatars/user-04.jpg",
 ];
 
+// Install event: cache files
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(cacheName).then((cache) => cache.addAll(filesToCache))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(filesToCache))
   );
+  self.skipWaiting();
 });
 
+// Activate event: clean up old caches
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames
+            .filter(
+              (name) =>
+                name.startsWith("belal-portfolio-cache-") && name !== CACHE_NAME
+            )
+            .map((name) => caches.delete(name))
+        )
+      )
+  );
+  self.clients.claim();
+});
+
+// Fetch event: cache-first, fallback to network, fallback to offline page
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) return response;
+      return fetch(event.request)
+        .then((networkResponse) => {
+          // Optionally cache new requests here if needed
+          return networkResponse;
+        })
+        .catch(() => {
+          // If request is for a navigation to a page, show offline fallback
+          if (event.request.mode === "navigate") {
+            return caches.match(OFFLINE_URL);
+          }
+        });
     })
   );
 });
