@@ -1,9 +1,11 @@
 const CACHE_VERSION = "v2";
 const CACHE_NAME = `belal-portfolio-cache-${CACHE_VERSION}`;
 const OFFLINE_URL = "/portfolio/offline.html"; // Optional: create this file
+
 const filesToCache = [
   "./",
   "index.html",
+  "offline.html",
   "site.webmanifest",
   "android-chrome-192x192.png",
   "android-chrome-512x512.png",
@@ -14,7 +16,7 @@ const filesToCache = [
   "Belal CV.pdf",
 
   // css
-  "css/main.css",
+  "css/styles.css",
   "css/vendor.css",
 
   // js
