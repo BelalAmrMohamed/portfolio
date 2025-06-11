@@ -38,14 +38,14 @@ const filesToCache = [
   "screenshots/screenshot-desktop.png",
 
   // Portfolio images
-  "images/portfolio/numbersystems.jpg",
-  "images/portfolio/numbersystems@2x.jpg",
+  "images/portfolio/ns.jpg",
+  "images/portfolio/ns@2x.jpg",
   "images/portfolio/ceaser.jpg",
   "images/portfolio/ceaser@2x.jpg",
   "images/portfolio/calculator.jpg",
   "images/portfolio/calculator@2x.jpg",
-  "images/portfolio/numbersystems - web.jpg",
-  "images/portfolio/numbersystems - web@2x.jpg",
+  "images/portfolio/nsweb.jpg",
+  "images/portfolio/nsweb@2x.jpg",
   "images/portfolio/playfair.jpg",
   "images/portfolio/playfair@2x.jpg",
   "images/portfolio/row.jpg",
