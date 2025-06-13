@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v4";
 const CACHE_NAME = `belal-portfolio-cache-${CACHE_VERSION}`;
 const OFFLINE_URL = "/portfolio/offline.html"; // Optional: create this file
 
@@ -72,51 +72,47 @@ const filesToCache = [
   "images/avatars/user-04.jpg",
 ];
 
-// Install event: cache files
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(filesToCache))
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(FILES_TO_CACHE);
+    })
   );
   self.skipWaiting();
 });
 
-// Activate event: clean up old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((cacheNames) =>
-        Promise.all(
-          cacheNames
-            .filter(
-              (name) =>
-                name.startsWith("belal-portfolio-cache-") && name !== CACHE_NAME
-            )
-            .map((name) => caches.delete(name))
-        )
-      )
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
   );
   self.clients.claim();
 });
 
-// Fetch event: cache-first, fallback to network, fallback to offline page
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) return response;
-      return fetch(event.request)
-        .then((networkResponse) => {
-          // Optionally cache new requests here if needed
-          return networkResponse;
-        })
-        .catch(() => {
-          // If request is for a navigation to a page, show offline fallback
+    fetch(event.request)
+      .then((networkResponse) => {
+        return networkResponse;
+      })
+      .catch(() => {
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
           if (event.request.mode === "navigate") {
             return caches.match(OFFLINE_URL);
           }
         });
-    })
+      })
   );
 });
