@@ -34,6 +34,9 @@ My portfolio is accessible as an **onion service** on the Tor network. It is hos
 **Onion URL:**  
 `http://4zwkrzxvxxad7tv77qtobt6vx5nothdzv2t5ysisjefok2rl5i5te4yd.onion/`
 
+**Clearnet (Standard Web):**  
+[https://belalamrmohamed.github.io/portfolio/](https://belalamrmohamed.github.io/portfolio/)
+
 ## 🤝 Collaboration Opportunities
 
 I am actively seeking opportunities to collaborate on exciting development projects! I'm open to:
