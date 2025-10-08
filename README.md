@@ -1,32 +1,57 @@
-Welcome to My Portfolio Website
-About Me
-Name: Belal Amr Mohamed
+# 👋 Welcome to My Developer Portfolio
 
-Interests: Web Development, Software Development, and Collaborative Projects
+Hi, I'm **Belal Amr Mohamed**, a passionate developer focused on building functional and visually appealing web experiences.
 
-Current Focus: Enhancing my skills in C++, HTML, JavaScript, Python, and CSS
+## 🚀 About Me
 
-Goal: To contribute to innovative development projects and collaborate with like-minded professionals.
+*   **Interests:** Software Engineering and Collaborative Projects.
+*   **Current Focus:** Sharpening my skills in **C++ and C#**.
+*   **Goal:** To contribute to innovative and impactful development projects while collaborating with other skilled professionals.
 
-What You'll Find Here
-This website serves as a showcase for my web development projects. Each project demonstrates my growing expertise in front-end and back-end technologies, as well as my ability to create functional and visually appealing websites.
+## 💻 What You'll Find Here
 
-Skills and Expertise
-Programming Languages: C++, Python, JavaScript
+This repository hosts the code for my personal portfolio website. It's a living project that showcases my journey and growing expertise in both front-end and back-end technologies. Each project here demonstrates my ability to solve problems and create user-friendly applications.
 
-Web Development: HTML, CSS, JavaScript
+## 🛠️ Skills & Expertise
 
-Learning: Continuously expanding my knowledge in web development frameworks and tools.
+### Programming Languages
+*   C++
+*   C#
 
-Collaboration Opportunities
-I am actively seeking opportunities to collaborate on development projects. Whether it's open-source contributions, team projects, or freelance work, I am eager to apply my skills and learn from others.
+### Web Development (beginner)
+*   HTML
+*   CSS
+*   JavaScript
 
-How to Reach Me
-Feel free to contact me for collaboration opportunities, project inquiries, or just to connect!
+### Continuous Learning
+I am constantly expanding my knowledge in modern web development frameworks, tools, and best practices to stay at the forefront of technology.
 
-Email: belalamrofficial@gmail.com
+## 🌐 Onion Service (Tor Network)
 
-GitHub: @BelalAmrMohamed
+**Note for Technical Users:**  
+My portfolio is accessible as an **onion service** on the Tor network. It is hosted locally on my machine, so availability depends on my laptop being online and acting as a server.
 
-Let's Build Something Amazing Together!
-I’m passionate about creating impactful digital experiences and would love to work with you on your next project. Don’t hesitate to reach out!
+**Onion URL:**  
+`http://4zwkrzxvxxad7tv77qtobt6vx5nothdzv2t5ysisjefok2rl5i5te4yd.onion/`
+
+## 🤝 Collaboration Opportunities
+
+I am actively seeking opportunities to collaborate on exciting development projects! I'm open to:
+*   Open-source contributions
+*   Team-based development projects
+*   Freelance work
+
+I'm eager to apply my skills, learn from others, and help bring great ideas to life.
+
+## 📫 Let's Connect!
+
+Feel free to reach out for collaboration, project inquiries, or just to chat!
+
+*   **Email:** [belalamrofficial@gmail.com](mailto:belalamrofficial@gmail.com)
+*   **GitHub:** [@BelalAmrMohamed](https://github.com/BelalAmrMohamed)
+
+---
+
+### **Let's Build Something Amazing Together!**
+
+I am passionate about creating impactful digital experiences and would love to be a part of your next project. Don't hesitate to get in touch!
